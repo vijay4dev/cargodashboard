@@ -2,6 +2,8 @@
 
 This project is a Flutter-based dashboard for managing cargo operations. It includes a responsive sidebar with expandable menus, animated transitions, and a main content area that displays tables, search components, or other management widgets.
 
+![Cargo Dashboard UI](assets/images/dashboard_preview.png)
+
 ## Features
 
 - **Responsive Sidebar**  
