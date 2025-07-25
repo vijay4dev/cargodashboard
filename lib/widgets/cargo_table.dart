@@ -29,15 +29,16 @@ class _PaginatedCargoTableState extends State<PaginatedCargoTable> {
       end > allItems.length ? allItems.length : end,
     );
 
-    return Column(
-      children: [
-        // Table
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
-            color: Colors.white,
-          ),
-          child: Table(
+    return Container(
+      width: double.infinity  ,
+      decoration: BoxDecoration(
+        color: Colors.white,  
+        borderRadius: BorderRadius.circular(18),
+      ),
+      child: Column(
+        children: [
+          // Table
+          Table(
             columnWidths: {
               0: FixedColumnWidth(150),
               1: FixedColumnWidth(150),
@@ -64,7 +65,7 @@ class _PaginatedCargoTableState extends State<PaginatedCargoTable> {
               ),
               // Data Rows
               ...pageItems.asMap().entries.map((entry) {
-
+                
                   final index = entry.key;
                   final item = entry.value;
                   final isInTransit = item.status == 'В пути';
@@ -90,13 +91,12 @@ class _PaginatedCargoTableState extends State<PaginatedCargoTable> {
               }),
             ],
           ),
-        ),
 
-        SizedBox(height: 16),
-
-        // Pagination
-        paginationWidget(),
-      ],
+          Divider(),
+          // Pagination
+          paginationWidget(),
+        ],
+      ),
     );
   }
 
@@ -109,7 +109,7 @@ class _PaginatedCargoTableState extends State<PaginatedCargoTable> {
         padding: const EdgeInsets.all(10),
         child: Text(
           text,
-          maxLines: 10,
+          maxLines: 1,
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.center,
           style: TextStyle(color: textColor ?? Colors.black87),
@@ -133,6 +133,7 @@ class _PaginatedCargoTableState extends State<PaginatedCargoTable> {
     int pageCount = (allItems.length / rowsPerPage).ceil();
     return Wrap(
       spacing: 8,
+      
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         IconButton(
